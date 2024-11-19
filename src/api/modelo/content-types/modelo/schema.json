@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "modelos",
+  "info": {
+    "singularName": "modelo",
+    "pluralName": "modelos",
+    "displayName": "Modelo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "created_by_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "updated_by_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
