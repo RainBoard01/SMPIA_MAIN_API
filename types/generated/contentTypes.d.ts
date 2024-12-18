@@ -369,6 +369,53 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAnalisisAnalisis extends Struct.CollectionTypeSchema {
+  collectionName: 'analisises';
+  info: {
+    description: '';
+    displayName: 'Analisis';
+    pluralName: 'analisises';
+    singularName: 'analisis';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    archivo: Schema.Attribute.Media<'files'>;
+    clase_predominante: Schema.Attribute.String;
+    clases_detectadas: Schema.Attribute.JSON;
+    created_by_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::analisis.analisis'
+    > &
+      Schema.Attribute.Private;
+    magnitudes: Schema.Attribute.JSON;
+    metadata: Schema.Attribute.JSON;
+    modelo: Schema.Attribute.Relation<'oneToOne', 'api::modelo.modelo'>;
+    nombre: Schema.Attribute.String & Schema.Attribute.Required;
+    nombre_archivo: Schema.Attribute.String;
+    nombre_modelo: Schema.Attribute.String;
+    porcentaje_confianza: Schema.Attribute.Float;
+    publishedAt: Schema.Attribute.DateTime;
+    updated_by_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiModeloModelo extends Struct.CollectionTypeSchema {
   collectionName: 'modelos';
   info: {
@@ -396,6 +443,7 @@ export interface ApiModeloModelo extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     nombre: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    ruta: Schema.Attribute.String;
     updated_by_user: Schema.Attribute.Relation<
       'oneToOne',
       'plugin::users-permissions.user'
@@ -915,6 +963,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::analisis.analisis': ApiAnalisisAnalisis;
       'api::modelo.modelo': ApiModeloModelo;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

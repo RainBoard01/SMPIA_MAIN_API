@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "analisises",
+  "info": {
+    "singularName": "analisis",
+    "pluralName": "analisises",
+    "displayName": "Analisis",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "archivo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "data": {
+      "type": "json"
+    },
+    "clase_predominante": {
+      "type": "string"
+    },
+    "clases_detectadas": {
+      "type": "json"
+    },
+    "magnitudes": {
+      "type": "json"
+    },
+    "modelo": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::modelo.modelo"
+    },
+    "porcentaje_confianza": {
+      "type": "float"
+    },
+    "created_by_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "updated_by_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "nombre_archivo": {
+      "type": "string"
+    },
+    "nombre_modelo": {
+      "type": "string"
+    }
+  }
+}
